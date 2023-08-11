@@ -12,6 +12,7 @@ list(APPEND VCPKG_FEATURE_FLAGS "versions")
 find_package(PythonLibs REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(Eigen3 REQUIRED)
+set(Python_ADDITIONAL_VERSIONS 3.10)
 find_package(PythonLibs REQUIRED)
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system serialization)
@@ -25,6 +26,7 @@ ${OpenCV_INCLUDE_DIRS}
         ${Pangolin_INCLUDE_DIRS}
         ${PYTHON_INCLUDE_DIRS}
         ${Boost_INCLUDE_DIRS}
+
         ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/
         ${PROJECT_SOURCE_DIR}/Thirdparty/
         ${PROJECT_SOURCE_DIR}/utils
@@ -63,6 +65,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
         ${OpenCV_LIBS}
         ${EIGEN3_LIBS}
         ${Pangolin_LIBRARIES}
+        ${PYTHON_LIBRARIES}
         g2o
         DBoW3
         Threads::Threads Boost::boost Boost::serialization Boost::system ${PYTHON_LIBRARIES} nlohmann_json::nlohmann_json

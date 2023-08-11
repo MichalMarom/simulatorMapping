@@ -4,6 +4,7 @@
 #include "simulator.h"
 #include "include/Auxiliary.h"
 
+
 int main(int argc, char **argv)
 {
     std::ifstream programData(argv[1]);
@@ -24,6 +25,20 @@ int main(int argc, char **argv)
    //simulator.simulatorRunThread();
     while (!simulator.isReady())
     { // wait for the 3D model to load
+        Sleep(1);
+    }
+
+    auto lastKeyFrame = simulator.GetSLAM()->GetTracker()->getLastKeyFrame();
+    auto currentPoints = lastKeyFrame->GetMapPoints();
+    std::vector<Eigen::Vector3d> points;
+    for (auto point : currentPoints)
+    {
+        points.emplace_back(ORB_SLAM2::Converter::toVector3d(point->GetWorldPos()));
+    }
+
+    while (true)
+    {       
+        //wallDetector(points);
         Sleep(1);
     }
     std::cout << "to stop press k" << std::endl;

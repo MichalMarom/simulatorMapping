@@ -1101,7 +1101,7 @@ bool Vocabulary::load(std::istream &ifile)
     uint64_t sig;//magic number describing the file
     ifile.read((char*)&sig,sizeof(sig));
     if (sig != 88877711233) // Check if it is a binary file.
-        return false;
+        return true;
 
     ifile.seekg(0,std::ios::beg);
     fromStream(ifile);

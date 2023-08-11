@@ -20,6 +20,7 @@
 #include <Eigen/SVD>
 #include <filesystem>
 #include "include/run_model/TextureShader.h"
+#include "wall_detector/WallDetection.h"
 /**
  *  @class Simulator
  *  @brief This class provides a simulation environment for virtual robotic navigation and mapping.
